@@ -1,8 +1,7 @@
-import { Route, Redirect } from "react-router-dom";
+import { Route, } from "react-router-dom";
 import React from "react";
 import Login from "./auth/Login";
 import Home from "./home/Home";
-import NewsList from "./articles/NewsList"
 
 const ApplicationViews = (props) => {
     const hasUser = props.hasUser;
@@ -19,15 +18,6 @@ const ApplicationViews = (props) => {
             return <Home />;
           }}
         />
-           <Route
-        exact path="/news"
-        render={props => {
-          if (hasUser) {
-            return <NewsList {...props} />
-          } else {
-            return <Redirect to="/login" />
-          }
-        }} />
       </React.Fragment>
     );
   };
