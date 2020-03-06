@@ -3,6 +3,7 @@ import React from "react";
 import Login from "./auth/Login";
 import Home from "./home/Home";
 import NewsList from "./articles/NewsList";
+import NewsForm from "./articles/NewsForm";
 import TaskList from "../components/tasks/TaskList";
 import TaskForm from "../components/tasks/TaskForm";
 import TaskEditForm from "../components/tasks/TaskEditForm";
@@ -10,6 +11,7 @@ import TaskEditForm from "../components/tasks/TaskEditForm";
 const ApplicationViews = props => {
   const hasUser = props.hasUser;
   const setUser = props.setUser;
+
   return (
     <React.Fragment>
       <Route
@@ -37,16 +39,6 @@ const ApplicationViews = props => {
         }}
       />
       <Route
-        path="/tasks/new"
-        render={props => {
-          if (hasUser) {
-            return <TaskForm {...props} />;
-          } else {
-            return <Redirect to="/login" />;
-          }
-        }}
-      />
-      <Route
         exact
         path="/tasks/:taskId(\d+)/edit"
         render={props => {
@@ -63,6 +55,16 @@ const ApplicationViews = props => {
         render={props => {
           if (hasUser) {
             return <NewsList {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
+        }}
+      />
+      <Route
+        path="/news/new"
+        render={props => {
+          if (hasUser) {
+            return <NewsForm {...props} />;
           } else {
             return <Redirect to="/login" />;
           }
