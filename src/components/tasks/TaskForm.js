@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TaskManager from "../../modules/TaskManager";
 
 const TaskForm = props => {
-  const [task, setTask] = useState({ name: "", completionDate: "" });
+  const [tasks, setTask] = useState({ name: "", completionDate: "" });
   const [isLoading, setIsLoading] = useState(false);
 
   const handleFieldChange = evt => {
@@ -13,12 +13,12 @@ const TaskForm = props => {
 
   const constructNewTask = evt => {
     evt.preventDefault();
-    if (task.name === "" || task.completionDate === "") {
+    if (tasks.name === "" || tasks.completionDate === "") {
       window.alert("Please input a task name and expected completion date");
     } else {
       setIsLoading(true);
 
-      TaskManager.post(task).then(() => props.history.push("/tasks"));
+      TaskManager.post(tasks).then(() => props.history.push("/tasks"));
     }
   };
 
