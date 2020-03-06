@@ -16,7 +16,7 @@ const NavBar = props => {
             <nav>
                 <ul className="container">
                     <li>
-                        <NavLink className="nav-link" to="/ " activeClassName="selected" >
+                        <NavLink className="nav-link" to="/" activeClassName="selected" >
                             Home
             </NavLink>
                     </li>

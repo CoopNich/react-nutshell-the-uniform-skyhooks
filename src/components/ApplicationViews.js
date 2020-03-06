@@ -3,23 +3,24 @@ import React from "react";
 import Login from "./auth/Login";
 import Home from "./home/Home";
 import NewsList from "./articles/NewsList"
+import NewsForm from "./articles/NewsForm"
 
 const ApplicationViews = (props) => {
-  const hasUser = props.hasUser;
-  const setUser = props.setUser;
-  return (
-    <React.Fragment>
-      <Route path="/login" render={props => {
-        return <Login setUser={setUser} {...props} />
-      }} />
-      <Route
-        exact
-        path="/ "
-        render={props => {
-          return <Home />;
-        }}
-      />
-      <Route
+    const hasUser = props.hasUser;
+    const setUser = props.setUser;
+    return (
+      <React.Fragment>
+        <Route path="/login" render={props => {
+          return <Login setUser={setUser} {...props} />
+        }} />
+        <Route
+          exact
+          path="/"
+          render={props => {
+            return <Home />;
+          }}
+        />
+           <Route
         exact path="/news"
         render={props => {
           if (hasUser) {
@@ -28,18 +29,17 @@ const ApplicationViews = (props) => {
             return <Redirect to="/login" />
           }
         }} />
-      <Route
-        render={props => {
-          if (isAuthenticated()) {
-            return <EventsList
-              {...props} />
+              <Route path="/news/new"
+        render={(props) => {
+          if (hasUser) {
+            return <NewsForm {...props}
+            />
           } else {
-            return <Redirect to="/Login" />
+            return <Redirect to="/login" />
           }
-        }}
-      />
-    </React.Fragment>
-  );
-};
-
-export default ApplicationViews;
+        }} />
+      </React.Fragment>
+    );
+  };
+  
+  export default ApplicationViews;

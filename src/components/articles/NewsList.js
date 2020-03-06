@@ -17,6 +17,13 @@ const NewsList = (props) => {
 
     return (
         <>
+            <section className="section-content">
+                <button type="button"
+                    className="btn"
+                    onClick={() => { props.history.push("/news/new") }}>
+                    Add Article
+                </button>
+            </section>
             <div className="container-cards">
                 {news.map(article =>
                     <NewsCard
