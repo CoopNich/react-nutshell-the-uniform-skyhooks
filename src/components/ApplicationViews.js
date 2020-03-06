@@ -1,26 +1,30 @@
-import { Route, Redirect} from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import React from "react";
 import Login from "./auth/Login";
 import Home from "./home/Home";
+import NewsList from "./articles/NewsList";
 import TaskList from "../components/tasks/TaskList";
 import TaskForm from "../components/tasks/TaskForm";
 
-const ApplicationViews = (props) => {
-    const hasUser = props.hasUser;
-    const setUser = props.setUser;
-    return (
-      <React.Fragment>
-        <Route path="/login" render={props => {
-          return <Login setUser={setUser} {...props} />
-        }} />
-        <Route
-          exact
-          path="/ "
-          render={props => {
-            return <Home />;
-          }}
-        />
-        <Route
+const ApplicationViews = props => {
+  const hasUser = props.hasUser;
+  const setUser = props.setUser;
+  return (
+    <React.Fragment>
+      <Route
+        path="/login"
+        render={props => {
+          return <Login setUser={setUser} {...props} />;
+        }}
+      />
+      <Route
+        exact
+        path="/ "
+        render={props => {
+          return <Home />;
+        }}
+      />
+      <Route
         exact
         path="/tasks"
         render={props => {
@@ -41,8 +45,19 @@ const ApplicationViews = (props) => {
           }
         }}
       />
-      </React.Fragment>
-    );
-  };
-  
-  export default ApplicationViews;
+      <Route
+        exact
+        path="/news"
+        render={props => {
+          if (hasUser) {
+            return <NewsList {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
+        }}
+      />
+    </React.Fragment>
+  );
+};
+
+export default ApplicationViews;
