@@ -18,6 +18,16 @@ const ApplicationViews = (props) => {
             return <Home />;
           }}
         />
+
+
+
+
+
+          {/* <Route */}
+
+
+
+
       </React.Fragment>
     );
   };
