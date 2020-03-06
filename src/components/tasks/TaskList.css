@@ -1,0 +1,17 @@
+button {
+    background-color: rgb(176, 51, 214);
+    border: none;
+    color: cornsilk;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    padding: .5em;
+    border-radius: 2px;
+    margin: .1em;
+    width: 100%;
+  }
+  
+button:hover {
+    background-color: rgb(88, 0, 139);
+  }

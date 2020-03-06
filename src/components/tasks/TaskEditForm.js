@@ -1,55 +1,67 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TaskManager from "../../modules/TaskManager";
 import "./TaskForm.css";
 
-const TaskForm = props => {
-  const [tasks, setTask] = useState({ name: "", completionDate: "" });
+const TaskEditForm = props => {
+  const [task, setTask] = useState({ name: "", completionDate: "" });
   const [isLoading, setIsLoading] = useState(false);
 
   const handleFieldChange = evt => {
-    const stateToChange = { ...tasks };
+    const stateToChange = { ...task };
     stateToChange[evt.target.id] = evt.target.value;
     setTask(stateToChange);
   };
 
-  const constructNewTask = evt => {
+  const updateExistingTask = evt => {
     evt.preventDefault();
-    if (tasks.name === "" || tasks.completionDate === "") {
-      window.alert("Please input a task name and expected completion date");
-    } else {
-      setIsLoading(true);
+    setIsLoading(true);
 
-      TaskManager.post(tasks).then(() => props.history.push("/tasks"));
-    }
+    const editedTask = {
+      id: props.match.params.taskId,
+      name: task.name,
+      completionDate: task.completionDate
+    };
+
+    TaskManager.update(editedTask).then(() => props.history.push("/tasks"));
   };
+
+  useEffect(() => {
+    TaskManager.get(props.match.params.taskId).then(task => {
+      setTask(task);
+      setIsLoading(false);
+    });
+  }, []);
 
   return (
     <>
       <form>
         <fieldset>
           <div className="formgrid">
-            <label htmlFor="name">Task Name </label>
+            <label htmlFor="Task name">Task Name</label>
             <input
               type="text"
               required
+              className="form-control"
               onChange={handleFieldChange}
               id="name"
-              placeholder="Task Name"
+              value={task.name}
             />
             <label htmlFor="completionDate">Complete By</label>
             <input
               type="date"
               required
+              className="form-control"
               onChange={handleFieldChange}
               id="completionDate"
-              placeholder="completionDate"
+              value={task.completionDate}
             />
           </div>
           <div className="alignRight">
             <button
               type="button"
               disabled={isLoading}
-              onClick={constructNewTask}
+              onClick={updateExistingTask}
+              className="btn btn-primary"
             >
               Submit
             </button>
@@ -60,4 +72,5 @@ const TaskForm = props => {
   );
 };
 
-export default TaskForm;
+
+export default TaskEditForm

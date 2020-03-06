@@ -5,6 +5,7 @@ import Home from "./home/Home";
 import NewsList from "./articles/NewsList";
 import TaskList from "../components/tasks/TaskList";
 import TaskForm from "../components/tasks/TaskForm";
+import TaskEditForm from "../components/tasks/TaskEditForm";
 
 const ApplicationViews = props => {
   const hasUser = props.hasUser;
@@ -40,6 +41,17 @@ const ApplicationViews = props => {
         render={props => {
           if (hasUser) {
             return <TaskForm {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
+        }}
+      />
+      <Route
+        exact
+        path="/tasks/:taskId(\d+)/edit"
+        render={props => {
+          if (hasUser) {
+            return <TaskEditForm {...props} />;
           } else {
             return <Redirect to="/login" />;
           }
