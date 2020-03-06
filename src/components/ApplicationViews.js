@@ -5,21 +5,21 @@ import Home from "./home/Home";
 import NewsList from "./articles/NewsList"
 
 const ApplicationViews = (props) => {
-    const hasUser = props.hasUser;
-    const setUser = props.setUser;
-    return (
-      <React.Fragment>
-        <Route path="/login" render={props => {
-          return <Login setUser={setUser} {...props} />
-        }} />
-        <Route
-          exact
-          path="/ "
-          render={props => {
-            return <Home />;
-          }}
-        />
-           <Route
+  const hasUser = props.hasUser;
+  const setUser = props.setUser;
+  return (
+    <React.Fragment>
+      <Route path="/login" render={props => {
+        return <Login setUser={setUser} {...props} />
+      }} />
+      <Route
+        exact
+        path="/ "
+        render={props => {
+          return <Home />;
+        }}
+      />
+      <Route
         exact path="/news"
         render={props => {
           if (hasUser) {
@@ -28,8 +28,18 @@ const ApplicationViews = (props) => {
             return <Redirect to="/login" />
           }
         }} />
-      </React.Fragment>
-    );
-  };
-  
-  export default ApplicationViews;
+      <Route
+        render={props => {
+          if (isAuthenticated()) {
+            return <EventsList
+              {...props} />
+          } else {
+            return <Redirect to="/Login" />
+          }
+        }}
+      />
+    </React.Fragment>
+  );
+};
+
+export default ApplicationViews;
