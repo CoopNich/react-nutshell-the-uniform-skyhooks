@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import TaskCard from "./TaskCard";
 import TaskManager from "../../modules/TaskManager";
-import './TaskList.css'
 
 const TaskList = props => {
   const [tasks, setTasks] = useState([]);

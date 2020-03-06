@@ -1,5 +1,4 @@
 import React from "react";
-import './Task.css'
 
 const TaskCard = props => {
   return (

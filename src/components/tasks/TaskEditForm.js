@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import TaskManager from "../../modules/TaskManager";
-import "./TaskForm.css";
 
 const TaskEditForm = props => {
   const [task, setTask] = useState({ name: "", completionDate: "" });

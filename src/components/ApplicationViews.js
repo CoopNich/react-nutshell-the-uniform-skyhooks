@@ -38,6 +38,18 @@ const ApplicationViews = props => {
           }
         }}
       />
+
+      <Route
+        path="/tasks/new"
+        render={props => {
+          if (hasUser) {
+            return <TaskForm {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
+        }}
+      />
+
       <Route
         exact
         path="/tasks/:taskId(\d+)/edit"
