@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import TaskManager from "../../modules/TaskManager";
+import './TaskForm.css'
 
 const TaskForm = props => {
   const [tasks, setTask] = useState({ name: "", completionDate: "" });
@@ -27,30 +28,32 @@ const TaskForm = props => {
       <form>
         <fieldset>
           <div className="formgrid">
+            <label htmlFor="name">Task Name </label>
             <input
               type="text"
               required
               onChange={handleFieldChange}
               id="name"
-              placeholder="TaskName"
+              placeholder="Task Name"
             />
-            <label htmlFor="name">Name</label>
-
+            <br></br>
+            <label htmlFor="completionDate">Expected Completion Date</label>
             <input
-              type="text"
+              type="date"
               required
               onChange={handleFieldChange}
               id="completionDate"
               placeholder="completionDate"
             />
-            <label htmlFor="completionDate">Expected Completion Date</label>
           </div>
           <div className="alignRight">
             <button
               type="button"
               disabled={isLoading}
               onClick={constructNewTask}
-            >Submit</button>
+            >
+              Submit
+            </button>
           </div>
         </fieldset>
       </form>
