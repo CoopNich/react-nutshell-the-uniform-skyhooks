@@ -8,8 +8,8 @@ const MessageDetail = props => {
 
   useEffect(() => {
     MessageManager.get(props.messageId).then(message => {
-      setAnimal({
-        name: message.message,
+      setMessage({
+        message: message.message,
       });
       setIsLoading(false);
     });
@@ -28,7 +28,7 @@ const MessageDetail = props => {
           Message: <span style={{ color: "darkslategrey" }}>{firstLetterCase(message.message)}</span>
         </h3>
         <button type="button" disabled={isLoading} onClick={handleDelete}>
-          Discharge
+          Delete
         </button>
       </div>
     </div>
