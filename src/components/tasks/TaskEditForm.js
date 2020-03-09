@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import TaskManager from "../../modules/TaskManager";
-import { Link } from "react-router-dom";
-
 
 const TaskEditForm = props => {
   const [task, setTask] = useState({ name: "", completionDate: "" });
@@ -19,8 +17,7 @@ const TaskEditForm = props => {
 
     const editedTask = {
       id: props.match.params.taskId,
-      name: task.name,
-      completionDate: task.completionDate
+      name: task.name
     };
 
     TaskManager.update(editedTask).then(() => props.history.push("/tasks"));
@@ -33,6 +30,12 @@ const TaskEditForm = props => {
     });
   }, []);
 
+  const cancelForm = () => {
+    return TaskManager.getAll().then(tasks => {
+      setTask(tasks);
+      props.history.push("/tasks");
+    });
+  };
 
   return (
     <>
@@ -48,41 +51,27 @@ const TaskEditForm = props => {
               id="name"
               value={task.name}
             />
-            <label htmlFor="completionDate">Complete By</label>
-            <input
-              type="date"
-              required
-              className="form-control"
-              onChange={handleFieldChange}
-              id="completionDate"
-              value={task.completionDate}
-            />
           </div>
-          <div className="alignRight">
-            <button
-              type="button"
-              disabled={isLoading}
-              onClick={updateExistingTask}
-              className="btn btn-primary"
-            >
-              Submit
-            </button>
-          </div>
-          <div className="alignRight">
-            <button
-              type="button"
-              disabled={isLoading}
-              onClick= {<Link to="/" ></Link>}
-              className="btn btn-primary"
-            >
-              Cancel
-            </button>
-          </div>
+          <button
+            type="button"
+            disabled={isLoading}
+            onClick={updateExistingTask}
+            className="btn btn-primary"
+          >
+            Submit
+          </button>
+          <button
+            type="button"
+            disabled={isLoading}
+            onClick={cancelForm}
+            className="btn btn-primary"
+          >
+            Cancel
+          </button>
         </fieldset>
       </form>
     </>
   );
 };
 
-
-export default TaskEditForm
+export default TaskEditForm;

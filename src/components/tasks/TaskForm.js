@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TaskManager from "../../modules/TaskManager";
 
 const TaskForm = props => {
-  const [tasks, setTask] = useState({ name: "", completionDate: "" });
+  const [tasks, setTask] = useState({ name: "", completionDate: "", isComplete: false });
   const [isLoading, setIsLoading] = useState(false);
 
   const handleFieldChange = evt => {

@@ -5,15 +5,15 @@ const TaskCard = props => {
     <div className="card">
       <div className="card-content">
         <h3>
-          <span className="card-taskname">{props.task.name}</span>
+          <span className="card-taskname">
+            <p
+              onClick={() => props.history.push(`/tasks/${props.task.id}/edit`)}
+            >
+          {props.task.name}
+            </p>
+          </span>
         </h3>
         <p>Expected Completion Date: {props.task.completionDate}</p>
-        <button
-          type="button"
-          onClick={() => props.history.push(`/tasks/${props.task.id}/edit`)}
-        >
-          Edit
-        </button>
         {props.deleteTask && (
           <button
             type="button"
@@ -27,7 +27,12 @@ const TaskCard = props => {
         )}
         <div className="radio">
           <label>
-            <input type="radio" value="isComplete" />
+            <input
+              type="radio"
+              value="isComplete"
+              // checked={}
+              // onChange={}
+            />
             Completed
           </label>
         </div>
