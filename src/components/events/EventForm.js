@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import EventManager from '../../modules/EventManager';
 
 const EventForm = props => {
-    const [event, setEvent] = useState({ name: "", date: "", location: "" });
+    const [event, setEvent] = useState({ eventName: "", date: "", location: "" });
     const [isLoading, setIsLoading] = useState(false);
 
     const handleFieldChange = evt => {
@@ -31,10 +31,10 @@ const EventForm = props => {
                   type="text"
                   required
                   onChange={handleFieldChange}
-                  id="name"
+                  id="eventName"
                   placeholder="Event Name"
                 />
-                <label htmlFor="name">Event</label>
+                <label htmlFor="eventName">Event</label>
 
                 <input
                   type="date"
