@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MessageManager from "../../modules/MessageManager";
-import {firstLetterCase} from '../../modules/helpers'
+//import {firstLetterCase} from '../../modules/helpers'
+import "./MessageDetail.css";
 
 const MessageDetail = props => {
   const [message, setMessage] = useState({ message: ""});
@@ -25,7 +26,7 @@ const MessageDetail = props => {
     <div className="card">
       <div className="card-content">
         <h3>
-          Message: <span style={{ color: "darkslategrey" }}>{firstLetterCase(message.message)}</span>
+          Message: <span style={{ color: "darkslategrey" }}>{message.message}</span>
         </h3>
         <button type="button" disabled={isLoading} onClick={handleDelete}>
           Delete

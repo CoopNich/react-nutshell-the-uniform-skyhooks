@@ -18,7 +18,7 @@ const MessageList = props => {
 
 
   const deleteMessage= id => {
-    MessagelManager.delete(id).then(() =>
+    MessageManager.delete(id).then(() =>
       MessageManager.getAll().then(setMessages)
     );
   };
@@ -52,3 +52,5 @@ const MessageList = props => {
 };
 
 export default MessageList;
+
+ 

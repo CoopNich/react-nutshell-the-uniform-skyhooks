@@ -12,11 +12,11 @@ const MessageCard = props => {
         
         <button
           type="button"
-          onClick={() => props.deleteAnimal(props.message.id)}
+          onClick={() => props.deleteMessage(props.message.id)}
         >
           Delete Message
         </button>
-        <Link to={`/animals/${props.message.id}`}>
+        <Link to={`/messages/${props.messages.id}`}>
           <button>Message</button>
         </Link>
       </div>

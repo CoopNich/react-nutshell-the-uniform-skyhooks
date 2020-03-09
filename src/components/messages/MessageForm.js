@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import MessageManager from '../../modules/MessageManager';
-
+import "./MessageForm.css";
 
 const MessageForm = props => {
   const [message, setMessage] = useState({ message: ""});
@@ -20,7 +20,7 @@ const MessageForm = props => {
     } else {
       setIsLoading(true);
      MessageManager.post(message)
-        .then(() => props.history.push("messages"));
+        .then(() => props.history.push("/messages"));
     }
   };
 
@@ -34,23 +34,22 @@ const MessageForm = props => {
               required
               onChange={handleFieldChange}
               id="message"
-              placeholder="Message"
-            />
-            <label htmlFor="message"></label>
-            <input
-              type="text"
-              required
-              onChange={handleFieldChange}
-              id="message"
               placeholder="message"
             />
-            <label htmlFor="message">Message</label>
+            <label htmlFor="date"></label>
+            <input
+              type="date"
+              required
+              onChange={handleFieldChange}
+              id="date"
+            />
+
           </div>
           <div className="alignRight">
             <button
               type="button"
               disabled={isLoading}
-              onClick={constructMessage}
+              onClick={constructNewMessage}
             >Submit</button>
           </div>
         </fieldset>
