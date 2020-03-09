@@ -4,6 +4,7 @@ import Login from "./auth/Login";
 import Home from "./home/Home";
 import NewsList from "./articles/NewsList";
 import NewsForm from "./articles/NewsForm";
+import NewsDetail from "./articles/NewsDetail";
 import TaskList from "../components/tasks/TaskList";
 import TaskForm from "../components/tasks/TaskForm";
 import TaskEditForm from "../components/tasks/TaskEditForm";
@@ -82,6 +83,14 @@ const ApplicationViews = props => {
           }
         }}
       />
+            <Route exact path="/news/:articleId(\d+)"
+        render={props => {
+          if (hasUser) {
+            return <NewsDetail articleId={parseInt(props.match.params.articleId)} {...props} />
+          } else {
+            return <Redirect to="/login" />
+          }
+        }} />
     </React.Fragment>
   );
 };
