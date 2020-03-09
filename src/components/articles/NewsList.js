@@ -11,6 +11,11 @@ const NewsList = (props) => {
         });
     };
 
+    const deleteArticle = id => {
+        NewsManager.delete(id)
+            .then(() => NewsManager.getAll().then(setNews));
+    };
+
     useEffect(() => {
         getNews();
     }, []);
@@ -29,6 +34,7 @@ const NewsList = (props) => {
                     <NewsCard
                         key={article.id}
                         article={article}
+                        deleteArticle={deleteArticle}
                         {...props}
                     />
                 )}
