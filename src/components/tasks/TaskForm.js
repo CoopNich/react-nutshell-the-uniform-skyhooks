@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import TaskManager from "../../modules/TaskManager";
 
 const TaskForm = props => {
-  const [tasks, setTask] = useState({ name: "", completionDate: "", isComplete: false });
+  const [tasks, setTask] = useState({
+    name: "",
+    completionDate: "",
+    isComplete: false
+  });
   const [isLoading, setIsLoading] = useState(false);
 
   const handleFieldChange = evt => {
@@ -17,15 +21,10 @@ const TaskForm = props => {
       window.alert("Please input a task name and expected completion date");
     } else {
       setIsLoading(true);
-// add code so Tasks only render for the logged in user. 
-const newTasks = {
-  ...tasks, 
-  // title: news.title,
-  // url: news.url,
-  // synopsis: news.synopsis,
-  // timestamp: Date.now(),
-  userId: parseInt(sessionStorage.getItem("credentials"))
-}
+      const newTasks = {
+        ...tasks,
+        userId: parseInt(sessionStorage.getItem("credentials"))
+      };
 
       TaskManager.post(newTasks).then(() => props.history.push("/tasks"));
     }
