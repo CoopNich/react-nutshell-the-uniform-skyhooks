@@ -9,6 +9,7 @@ const NewsCard = props => {
           {props.article.title}
         </span></h3>
         <p><a href={props.article.url}>Link</a></p>
+        <button type="button" onClick={() => props.deleteArticle(props.article.id)}>Delete</button>
       </div>
     </div>
     )

@@ -7,6 +7,11 @@ export default {
     getAll() {
         return fetch(`${remoteURL}/articles`).then(result => result.json())
     },
+    delete(id) {
+        return fetch(`${remoteURL}/articles/${id}`, {
+          method: "DELETE"
+        }).then(result => result.json())
+      },
     post(newArticle) {
         return fetch(`${remoteURL}/articles`, {
             method: "POST",
