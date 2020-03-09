@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 import TaskManager from "../../modules/TaskManager";
 
 const TaskEditForm = props => {
-  const [task, setTask] = useState({ name: "", completionDate: "" });
+  const [task, setTask] = useState({
+    name: "",
+    completionDate: "",
+    isComplete: false
+  });
   const [isLoading, setIsLoading] = useState(false);
 
   const handleFieldChange = evt => {
@@ -17,7 +21,9 @@ const TaskEditForm = props => {
 
     const editedTask = {
       id: props.match.params.taskId,
-      name: task.name
+      name: task.name,
+      completionDate: task.completionDate,
+      isComplete: task.isComplete
     };
 
     TaskManager.update(editedTask).then(() => props.history.push("/tasks"));
@@ -29,13 +35,6 @@ const TaskEditForm = props => {
       setIsLoading(false);
     });
   }, []);
-
-  const cancelForm = () => {
-    return TaskManager.getAll().then(tasks => {
-      setTask(tasks);
-      props.history.push("/tasks");
-    });
-  };
 
   return (
     <>
@@ -59,14 +58,6 @@ const TaskEditForm = props => {
             className="btn btn-primary"
           >
             Submit
-          </button>
-          <button
-            type="button"
-            disabled={isLoading}
-            onClick={cancelForm}
-            className="btn btn-primary"
-          >
-            Cancel
           </button>
         </fieldset>
       </form>
