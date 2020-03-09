@@ -5,7 +5,7 @@ export default {
         return fetch(`${remoteURL}/articles/${id}`).then(result => result.json())
     },
     getAll() {
-        return fetch(`${remoteURL}/articles`).then(result => result.json())
+        return fetch(`${remoteURL}/articles?userId=${parseInt(sessionStorage.getItem("credentials"))}`).then(result => result.json())
     },
     delete(id) {
         return fetch(`${remoteURL}/articles/${id}`, {

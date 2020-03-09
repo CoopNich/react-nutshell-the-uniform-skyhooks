@@ -11,6 +11,7 @@ const NewsList = (props) => {
         });
     };
 
+
     const deleteArticle = id => {
         NewsManager.delete(id)
             .then(() => NewsManager.getAll().then(setNews));
