@@ -5,7 +5,7 @@ const NavBar = props => {
 
     const handleLogout = () => {
         props.clearUser();
-        props.history.push('/ ');
+        props.history.push('/');
     }
 
     return (
