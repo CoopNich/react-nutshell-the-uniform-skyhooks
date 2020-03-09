@@ -5,7 +5,7 @@ export default {
     return fetch(`${remoteURL}/tasks/${id}`).then(result => result.json());
   },
   getAll() {
-    return fetch(`${remoteURL}/tasks?isComplete=false`).then(result => result.json());
+    return fetch(`${remoteURL}/tasks?isComplete=false?userId=${parseInt(sessionStorage.getItem("credentials"))}`).then(result => result.json());
   },
   delete(id) {
     return fetch(`${remoteURL}/tasks/${id}`, {
