@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TaskManager from "../../modules/TaskManager";
+import { Link } from "react-router-dom";
+
 
 const TaskEditForm = props => {
   const [task, setTask] = useState({ name: "", completionDate: "" });
@@ -30,6 +32,7 @@ const TaskEditForm = props => {
       setIsLoading(false);
     });
   }, []);
+
 
   return (
     <>
@@ -63,6 +66,16 @@ const TaskEditForm = props => {
               className="btn btn-primary"
             >
               Submit
+            </button>
+          </div>
+          <div className="alignRight">
+            <button
+              type="button"
+              disabled={isLoading}
+              onClick= {<Link to="/" ></Link>}
+              className="btn btn-primary"
+            >
+              Cancel
             </button>
           </div>
         </fieldset>
