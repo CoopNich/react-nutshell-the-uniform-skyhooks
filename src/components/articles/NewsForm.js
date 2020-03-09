@@ -3,7 +3,7 @@ import NewsManager from "../../modules/NewsManager"
 
 
 const NewsForm = props => {
-    const [news, setNews] = useState({ title: "", url: "", synopsis: "", timestamp: "" })
+    const [news, setNews] = useState({ title: "", url: "", synopsis: "", timestamp: Date.now() })
     const [isLoading, setIsLoading] = useState(false);
 
     const handleFieldChange = evt => {
@@ -51,14 +51,6 @@ const NewsForm = props => {
                             onChange={handleFieldChange}
                             id="synopsis"
                             placeholder="Synopsis"
-                        />
-                        <label htmlFor="timestamp">Date</label>
-                        <input
-                            type="date"
-                            required
-                            onChange={handleFieldChange}
-                            id="timestamp"
-                            placeholder="Article Date"
                         />
 
                     </div>
