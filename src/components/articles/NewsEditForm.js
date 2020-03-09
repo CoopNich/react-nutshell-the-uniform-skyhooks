@@ -64,14 +64,6 @@ const NewsEditForm = props => {
                             id="synopsis"
                             value={article.synopsis}
                         />
-                        <label htmlFor="timestamp">Date</label>
-                        <input
-                            type="date"
-                            required
-                            onChange={handleFieldChange}
-                            id="timestamp"
-                            value={article.timestamp}
-                        />
               </div>
               <div className="alignRight">
                 <button
