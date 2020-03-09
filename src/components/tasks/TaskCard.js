@@ -15,10 +15,22 @@ const TaskCard = props => {
           Edit
         </button>
         {props.deleteTask && (
-          <button type="button" onClick={() => props.deleteTask(props.task.id)}>
+          <button
+            type="button"
+            onClick={() => {
+              if (window.confirm("Are you sure you wish to delete this item?"))
+                props.deleteTask(props.task.id);
+            }}
+          >
             Delete
           </button>
         )}
+        <div className="radio">
+          <label>
+            <input type="radio" value="isComplete" />
+            Completed
+          </label>
+        </div>
       </div>
     </div>
   );
