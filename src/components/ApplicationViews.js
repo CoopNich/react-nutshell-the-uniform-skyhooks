@@ -7,6 +7,8 @@ import NewsForm from "./articles/NewsForm";
 import TaskList from "../components/tasks/TaskList";
 import TaskForm from "../components/tasks/TaskForm";
 import TaskEditForm from "../components/tasks/TaskEditForm";
+import EventList from "./events/EventList";
+import EventForm from "./events/EventForm";
 
 const ApplicationViews = props => {
   const hasUser = props.hasUser;
@@ -82,6 +84,35 @@ const ApplicationViews = props => {
           }
         }}
       />
+
+
+
+
+      <Route
+        exact
+        path="/events"
+        render={props => {
+          if (hasUser) {
+            return <EventList {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
+        }}
+      />
+      <Route
+        path="/events/new"
+        render={(props) => {
+          if (hasUser) {
+            return <EventForm {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
+        }}
+      />
+
+
+
+
     </React.Fragment>
   );
 };
