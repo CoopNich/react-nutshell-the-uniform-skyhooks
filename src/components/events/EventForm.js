@@ -19,9 +19,6 @@ const EventForm = props => {
           setIsLoading(true);
           const newEvent = {
             ...event, 
-            // eventName: event.eventName,
-            // date: event.date,
-            // location: event.location,
             timestamp: Date.now(),
             userId: parseInt(sessionStorage.getItem("credentials"))
         }
