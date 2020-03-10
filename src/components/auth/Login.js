@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import UserManager from "../../modules/UserManager"
 
 const Login = props => {
   const [credentials, setCredentials] = useState({ email: "",});
@@ -11,10 +12,14 @@ const Login = props => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-
-    props.setUser(credentials)
-    props.history.push("/ ");
-  }
+    UserManager.getUser(credentials.email)
+    .then(result => {
+      if (result.length === 0) {
+        window.alert("Please enter a valid email")
+      } else {
+    props.setUser(result[0].id)
+    props.history.push("/news");
+  }})}
 
   return (
     <form onSubmit={handleLogin}>
@@ -28,9 +33,14 @@ const Login = props => {
           <label htmlFor="inputEmail">Email address</label>
         </div>
         <button type="submit">Sign in</button>
+        <button type="button"
+          onClick={() => props.history.push(`/register`)}>
+          Register
+        </button>
       </fieldset>
     </form>
   );
 };
+
 
 export default Login;
