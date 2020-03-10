@@ -19,7 +19,8 @@ const EventEditForm = props => {
             id: props.match.params.eventId,
             eventName: event.eventName,
             date: event.date,
-            location: event.location
+            location: event.location,
+            userId: event.userId
         }
 
         EventManager.update(editedEvent)
