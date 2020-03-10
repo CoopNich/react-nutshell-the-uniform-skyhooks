@@ -22,7 +22,8 @@ const MessageForm = props => {
      
      const newMessage = {
        message:message.message, 
-       timestamp:Date.now()
+       timestamp:Date.now(),
+       userId: parseInt(sessionStorage.getItem("credentials"))
       };
 
      MessageManager.post(newMessage)

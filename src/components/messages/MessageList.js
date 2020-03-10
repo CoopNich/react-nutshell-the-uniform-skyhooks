@@ -8,6 +8,7 @@ const MessageList = props => {
 
   const getMessages = () => {
     return MessageManager.getAll().then(messagesFromAPI => {
+      console.log(messagesFromAPI);
       setMessages(messagesFromAPI);
     });
   };

@@ -17,7 +17,8 @@ const MessageEditForm = props => {
 
     const editedMessage = {
       id: props.match.params.messageId,
-      message: message.message
+      message: message.message,
+      userId: message.userId
     };
 
     MessageManager.update(editedMessage).then(() =>
