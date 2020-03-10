@@ -11,6 +11,7 @@ const EventCard = props => {
                 <p>Date: {props.event.date}</p>
                 <p>Location: {props.event.location}</p>
                 <button type="button" onClick={() => props.deleteEvent(props.event.id)}>Delete</button>
+                <button type="button" onClick={() => props.history.push(`/events/${props.event.id}/edit`)}>Edit</button>
             </div>
         </div>
     )

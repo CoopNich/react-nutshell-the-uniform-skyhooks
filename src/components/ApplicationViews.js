@@ -11,6 +11,7 @@ import TaskForm from "../components/tasks/TaskForm";
 import TaskEditForm from "../components/tasks/TaskEditForm";
 import EventList from "./events/EventList";
 import EventForm from "./events/EventForm";
+import EventEditForm from "./events/EventEditForm";
 
 const ApplicationViews = props => {
   const hasUser = props.hasUser;
@@ -106,6 +107,16 @@ const ApplicationViews = props => {
         render={(props) => {
           if (hasUser) {
             return <EventForm {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
+        }}
+      />
+      <Route
+        path="/events/:eventId(\d+)/edit"
+        render={props => {
+          if (hasUser) {
+            return <EventEditForm {...props} />;
           } else {
             return <Redirect to="/login" />;
           }
