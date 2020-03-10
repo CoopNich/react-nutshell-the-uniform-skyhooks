@@ -1,6 +1,7 @@
 import { Route, Redirect } from "react-router-dom";
 import React from "react";
 import Login from "./auth/Login";
+import Register from "./register/Register"
 import Home from "./home/Home";
 import NewsList from "./articles/NewsList";
 import NewsForm from "./articles/NewsForm";
@@ -19,6 +20,12 @@ const ApplicationViews = props => {
 
   return (
     <React.Fragment>
+           <Route
+        path="/register"
+        render={props => {
+          return <Register {...props} />;
+        }}
+      />
       <Route
         path="/login"
         render={props => {
