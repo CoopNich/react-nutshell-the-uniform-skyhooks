@@ -23,7 +23,8 @@ const TaskEditForm = props => {
       id: props.match.params.taskId,
       name: task.name,
       completionDate: task.completionDate,
-      isComplete: task.isComplete
+      isComplete: task.isComplete,
+      userId: task.userId,
     };
 
     TaskManager.update(editedTask).then(() => props.history.push("/tasks"));
