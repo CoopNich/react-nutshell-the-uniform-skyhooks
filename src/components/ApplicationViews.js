@@ -120,7 +120,7 @@ const ApplicationViews = props => {
       }}
       />
    
-        path="/news"
+       <Route path="/news"
         render={props => {
           if (hasUser) {
             return <NewsList {...props} />;
