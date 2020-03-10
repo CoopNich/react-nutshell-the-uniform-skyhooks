@@ -33,6 +33,10 @@ const Login = props => {
           <label htmlFor="inputEmail">Email address</label>
         </div>
         <button type="submit">Sign in</button>
+        <button type="button"
+          onClick={() => props.history.push(`/register`)}>
+          Register
+        </button>
       </fieldset>
     </form>
   );

@@ -20,7 +20,8 @@ const NewsEditForm = props => {
             title: article.title,
             url: article.url,
             synopsis: article.synopsis,
-            timestamp: article.timestamp
+            timestamp: article.timestamp,
+            userId: article.userId
         };
 
         NewsManager.update(editedArticle)
