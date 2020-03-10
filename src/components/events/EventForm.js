@@ -19,7 +19,7 @@ const EventForm = props => {
           setIsLoading(true);
           const newEvent = {
             ...event, 
-            timestamp: Date.now(),
+            
             userId: parseInt(sessionStorage.getItem("credentials"))
         }
           EventManager.post(newEvent)
