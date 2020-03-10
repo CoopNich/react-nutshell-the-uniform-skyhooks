@@ -17,15 +17,15 @@ const EventForm = props => {
           window.alert("Please input an event name, date, and location");
         } else {
           setIsLoading(true);
-          const newEvents = {
-            // ...events, 
+          const newEvent = {
+            ...event, 
             // eventName: event.eventName,
             // date: event.date,
             // location: event.location,
             timestamp: Date.now(),
             userId: parseInt(sessionStorage.getItem("credentials"))
         }
-          EventManager.post(event)
+          EventManager.post(newEvent)
             .then(() => props.history.push("/events"));
         }
       };
