@@ -1,11 +1,6 @@
 import React from "react";
 
 const TaskCard = props => {
-  //function that changes isComplete from false to true onChange, and then re-renders the task list
-  const taskComplete = () => {
-    console.log(props.task.isComplete);
-    };
-
   return (
     <div className="card">
       <div className="card-content">
@@ -35,7 +30,7 @@ const TaskCard = props => {
             <input
               type="checkbox"
               value={false}
-              onChange={taskComplete}
+              onChange={() => props.updateTask(props.task)}
             />
             Complete
           </label>

@@ -15,6 +15,12 @@ const TaskList = props => {
     TaskManager.delete(id).then(() => TaskManager.getAll().then(setTasks));
   };
 
+  const updateTask = task => {
+    task.isComplete = true
+    TaskManager.update(task).then(() => TaskManager.getAll().then(setTasks));
+  };
+
+ 
   useEffect(() => {
     getTasks();
   }, []);
@@ -38,6 +44,7 @@ const TaskList = props => {
             key={task.id}
             task={task}
             deleteTask={deleteTask}
+            updateTask={updateTask}
             {...props}
           />
         ))}
