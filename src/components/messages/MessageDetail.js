@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MessageManager from "../../modules/MessageManager";
-//import {firstLetterCase} from '../../modules/helpers'
-import "./MessageDetail.css";
+
+
 
 const MessageDetail = props => {
   const [message, setMessage] = useState({ message: ""});

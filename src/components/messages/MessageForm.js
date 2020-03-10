@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import MessageManager from '../../modules/MessageManager';
-import "./MessageForm.css";
+
 
 const MessageForm = props => {
   const [message, setMessage] = useState({ message: ""});

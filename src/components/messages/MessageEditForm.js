@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MessageManager from "../../modules/MessageManager";
-import "./MessageForm.css";
+
 const MessageEditForm = props => {
   const [message, setMessage] = useState({ message: ""});
   const [isLoading, setIsLoading] = useState(false);
