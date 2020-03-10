@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MessageManager from "../../modules/MessageManager";
-
-
+import "./MessageForm.css";
 const MessageEditForm = props => {
   const [message, setMessage] = useState({ message: ""});
   const [isLoading, setIsLoading] = useState(false);
@@ -12,7 +11,7 @@ const MessageEditForm = props => {
     setMessage(stateToChange);
   };
 
-  const updateExistingMessage= evt => {
+  const updateExistingMessage = evt => {
     evt.preventDefault();
     setIsLoading(true);
 
@@ -43,11 +42,10 @@ const MessageEditForm = props => {
               required
               className="form-control"
               onChange={handleFieldChange}
-              id="name"
+              id="message"
               value={message.message}
             />
             <label htmlFor="message">Message</label>
-
           </div>
           <div className="alignRight">
             <button
@@ -61,9 +59,9 @@ const MessageEditForm = props => {
           </div>
         </fieldset>
       </form>
-
     </>
   );
 };
 
 export default MessageEditForm;
+

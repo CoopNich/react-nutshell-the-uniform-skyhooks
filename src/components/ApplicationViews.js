@@ -7,7 +7,7 @@ import MessageDetail from "./messages/MessageDetail";
 import MessageEditForm from "./messages/MessageEditForm.js";
 import MessageForm from "./messages/MessageForm.js";
 
-const isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
+//const isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
 
 const ApplicationViews = props => {
   const hasUser = props.hasUser;
@@ -17,13 +17,14 @@ const ApplicationViews = props => {
     <React.Fragment>
       <Route
         path="/login"
-        render={props => {
-          return <Login setUser={setUser} {...props} />;
+        render={props => { 
+           return <Login setUser={setUser} {...props} />; 
         }}
-      />
+       /> 
+      
       <Route
         exact
-        path="/ "
+        path="/"
         render={props => {
           return <Home {...props} />;
         }}
@@ -32,27 +33,27 @@ const ApplicationViews = props => {
         exact
         path="/messages"
         render={props => {
-          if (isAuthenticated()) {
+          if (hasUser) {
           return <MessageList {...props} />;
-          } else {
-            return <Redirect to="/login" />;
-          }
+         } else {
+           return <Redirect to="/login" />;
+        }
         }}
       />
       <Route exact path="/messages/:messageId(\d+)"
       render={props => {
-        if (isAuthenticated()) {
+        if (hasUser){
         return (
           <MessageDetail
           messageId={parseInt(props.match.params.messageId)}
          {...props}
          />
           );
-        } else {
+         } else {
           return <Redirect to="/login" />;
         }
       }}
-      />
+      /> 
       <Route path="/messages/new"
       render={props => {
         return <MessageForm {...props} />;
@@ -60,10 +61,10 @@ const ApplicationViews = props => {
       />
       <Route path="/messages/:messageId(\d+)/edit"
       render={props => {
-        if(isAuthenticated()){
+       if(hasUser){
           return <MessageEditForm {...props} />;
         } else {
-          return <Redirect to="/login" />;
+           return <Redirect to="/login" />;
         }
       
       }}

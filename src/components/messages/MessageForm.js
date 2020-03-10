@@ -18,8 +18,14 @@ const MessageForm = props => {
     if (message.message === "" ) {
       window.alert("Please type a message.");
     } else {
-      setIsLoading(true);
-     MessageManager.post(message)
+     setIsLoading(true);
+     
+     const newMessage = {
+       message:message.message, 
+       timestamp:Date.now()
+      };
+
+     MessageManager.post(newMessage)
         .then(() => props.history.push("/messages"));
     }
   };
@@ -36,14 +42,8 @@ const MessageForm = props => {
               id="message"
               placeholder="message"
             />
-            <label htmlFor="date"></label>
-            <input
-              type="date"
-              required
-              onChange={handleFieldChange}
-              id="date"
-            />
-
+            <label htmlFor="message"></label>
+           
           </div>
           <div className="alignRight">
             <button

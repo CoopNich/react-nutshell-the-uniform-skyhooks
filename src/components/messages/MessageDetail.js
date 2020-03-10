@@ -26,15 +26,13 @@ const MessageDetail = props => {
     <div className="card">
       <div className="card-content">
         <h3>
-          Message: <span style={{ color: "darkslategrey" }}>{message.message}</span>
+          {message.message}
         </h3>
-        <button type="button" disabled={isLoading} onClick={handleDelete}>
-          Delete
-        </button>
+        
       </div>
     </div>
   );
 
 };
 
-export default MessageDetail;
+export default MessageDetail; 

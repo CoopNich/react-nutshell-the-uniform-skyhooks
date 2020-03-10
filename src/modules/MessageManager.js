@@ -7,11 +7,6 @@ export default {
   getAll() {
     return fetch(`${remoteURL}/messages`).then(result => result.json());
   },
-  delete(id) {
-    return fetch(`${remoteURL}/messages/${id}`, {
-      method: "DELETE"
-    }).then(result => result.json());
-  },
   post(newMessage) {
     return fetch(`${remoteURL}/messages`, {
       method: "POST",

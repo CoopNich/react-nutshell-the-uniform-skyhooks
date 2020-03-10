@@ -34,7 +34,7 @@ const MessageList = props => {
           Submit Message
         </button>
       </section>
-      <div className="container-cards">
+       <div className="container-cards">
         {messages.map(message => (
           <MessageCard
           key={message.id}
@@ -45,7 +45,7 @@ const MessageList = props => {
   
         ))}
     
-      </div>
+      </div>  
       
     </>
   );

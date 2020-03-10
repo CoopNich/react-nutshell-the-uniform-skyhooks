@@ -10,14 +10,9 @@ const MessageCard = props => {
           <span className="card-message">{props.message.message}</span>
         </h3>
         
-        <button
-          type="button"
-          onClick={() => props.deleteMessage(props.message.id)}
-        >
-          Delete Message
-        </button>
-        <Link to={`/messages/${props.messages.id}`}>
-          <button>Message</button>
+        
+        <Link to={`/messages/${props.message.id}`}>
+          
         </Link>
       </div>
       <button
