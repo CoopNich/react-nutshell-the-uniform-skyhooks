@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 import TaskManager from "../../modules/TaskManager";
 
 const TaskEditForm = props => {
-  const [task, setTask] = useState({ name: "", completionDate: "" });
+  const [task, setTask] = useState({
+    name: "",
+    completionDate: "",
+    isComplete: false
+  });
   const [isLoading, setIsLoading] = useState(false);
 
   const handleFieldChange = evt => {
@@ -18,7 +22,9 @@ const TaskEditForm = props => {
     const editedTask = {
       id: props.match.params.taskId,
       name: task.name,
-      completionDate: task.completionDate
+      completionDate: task.completionDate,
+      isComplete: task.isComplete,
+      userId: task.userId,
     };
 
     TaskManager.update(editedTask).then(() => props.history.push("/tasks"));
@@ -45,31 +51,19 @@ const TaskEditForm = props => {
               id="name"
               value={task.name}
             />
-            <label htmlFor="completionDate">Complete By</label>
-            <input
-              type="date"
-              required
-              className="form-control"
-              onChange={handleFieldChange}
-              id="completionDate"
-              value={task.completionDate}
-            />
           </div>
-          <div className="alignRight">
-            <button
-              type="button"
-              disabled={isLoading}
-              onClick={updateExistingTask}
-              className="btn btn-primary"
-            >
-              Submit
-            </button>
-          </div>
+          <button
+            type="button"
+            disabled={isLoading}
+            onClick={updateExistingTask}
+            className="btn btn-primary"
+          >
+            Submit
+          </button>
         </fieldset>
       </form>
     </>
   );
 };
 
-
-export default TaskEditForm
+export default TaskEditForm;
