@@ -5,7 +5,7 @@ export default {
         return fetch(`${remoteURL}/events/${id}`).then(result => result.json())
     },
     getAll() {
-        return fetch(`${remoteURL}/events`).then(result => result.json())
+        return fetch(`${remoteURL}/events?userId=${parseInt(sessionStorage.getItem("credentials"))}`).then(result => result.json())
     },
     delete(id) {
         return fetch(`${remoteURL}/events/${id}`, {
