@@ -3,6 +3,12 @@ import React from "react";
 import Login from "./auth/Login";
 import Register from "./register/Register"
 import Home from "./home/Home";
+import MessageList from "./messages/MessageList";
+import MessageDetail from "./messages/MessageDetail";
+import MessageEditForm from "./messages/MessageEditForm.js";
+import MessageForm from "./messages/MessageForm.js";
+
+//const isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
 import NewsList from "./articles/NewsList";
 import NewsForm from "./articles/NewsForm";
 import NewsDetail from "./articles/NewsDetail";
@@ -75,7 +81,46 @@ const ApplicationViews = props => {
       />
       <Route
         exact
-        path="/news"
+        path="/messages"
+        render={props => {
+          if (hasUser) {
+          return <MessageList {...props} />;
+         } else {
+           return <Redirect to="/login" />;
+        }
+        }}
+      />
+      <Route exact path="/messages/:messageId(\d+)"
+      render={props => {
+        if (hasUser){
+        return (
+          <MessageDetail
+          messageId={parseInt(props.match.params.messageId)}
+         {...props}
+         />
+          );
+         } else {
+          return <Redirect to="/login" />;
+        }
+      }}
+      /> 
+      <Route path="/messages/new"
+      render={props => {
+        return <MessageForm {...props} />;
+      }}
+      />
+      <Route path="/messages/:messageId(\d+)/edit"
+      render={props => {
+       if(hasUser){
+          return <MessageEditForm {...props} />;
+        } else {
+           return <Redirect to="/login" />;
+        }
+      
+      }}
+      />
+   
+       <Route path="/news"
         render={props => {
           if (hasUser) {
             return <NewsList {...props} />;

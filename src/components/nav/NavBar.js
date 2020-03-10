@@ -36,7 +36,7 @@ const NavBar = props => {
                         : null}
                     {props.hasUser
                         ? <li>
-                            <NavLink className="nav-link" to="/tasks" activeClassName="selected" >
+                            <NavLink className="nav-link" to="/Tasks" activeClassName="selected" >
                                 Tasks
             </NavLink>
                         </li>
