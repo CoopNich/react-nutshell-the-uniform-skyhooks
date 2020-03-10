@@ -5,7 +5,7 @@ export default {
     return fetch(`${remoteURL}/messages/${id}`).then(result => result.json());
   },
   getAll() {
-    return fetch(`${remoteURL}/messages`).then(result => result.json());
+    return fetch(`${remoteURL}/messages?_expand=user`).then(result => result.json());
   },
   post(newMessage) {
     return fetch(`${remoteURL}/messages`, {
