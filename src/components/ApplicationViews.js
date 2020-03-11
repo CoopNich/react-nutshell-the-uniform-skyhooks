@@ -40,7 +40,7 @@ const ApplicationViews = props => {
       />
       <Route
         exact
-        path="/"
+        path="/Home"
         render={props => {
           return <Home />;
         }}
@@ -120,7 +120,7 @@ const ApplicationViews = props => {
       }}
       />
    
-       <Route path="/news"
+       <Route exact path="/news"
         render={props => {
           if (hasUser) {
             return <NewsList {...props} />;

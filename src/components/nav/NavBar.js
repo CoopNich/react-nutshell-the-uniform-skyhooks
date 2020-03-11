@@ -1,5 +1,7 @@
 import React from "react";
 import { NavLink, withRouter } from "react-router-dom";
+import { Navbar, Nav, Jumbotron } from "react-bootstrap"
+import "./NavBar.css"
 
 const NavBar = props => {
 
@@ -10,57 +12,55 @@ const NavBar = props => {
 
     return (
         <header>
-            <h1 className="site-title">
-                Nutshell
-      </h1>
-            <nav>
-                <ul className="container">
-                    <li>
-                        <NavLink className="nav-link" to="/" activeClassName="selected" >
-                            Home
-            </NavLink>
-                    </li>
+            <Jumbotron className="site-title">
+                <h1>Nutshell</h1>
+            </Jumbotron>
+            <Navbar bg="dark" variant="dark" >
+                <Nav className="container">
+
+                    <NavLink className="nav-link" to="/Home">Home</NavLink>
+
                     {props.hasUser
-                        ? <li>
-                            <NavLink className="nav-link" to="/news" activeClassName="selected" >
-                                News
-            </NavLink>
-                        </li>
+                        ?
+                        <NavLink className="nav-link" to="/news" >
+                            News
+                            </NavLink>
+
                         : null}
                     {props.hasUser
-                        ? <li>
-                            <NavLink className="nav-link" to="/events" activeClassName="selected" >
-                                Events
-            </NavLink>
-                        </li>
+                        ?
+                        <NavLink className="nav-link" to="/events" >
+                            Events
+                            </NavLink>
+
                         : null}
                     {props.hasUser
-                        ? <li>
-                            <NavLink className="nav-link" to="/Tasks" activeClassName="selected" >
-                                Tasks
-            </NavLink>
-                        </li>
+                        ?
+                        <NavLink className="nav-link" to="/Tasks" >
+                            Tasks
+                             </NavLink>
+
                         : null}
                     {props.hasUser
-                        ? <li>
-                            <NavLink className="nav-link" to="/messages" activeClassName="selected" >
-                                Messages
-            </NavLink>
-                        </li>
+                        ?
+                        <NavLink className="nav-link" to="/messages" >
+                            Messages
+                            </NavLink>
+
                         : null}
                     {props.hasUser
-                        ? <li>
-                            <NavLink className="nav-link" to="/ " onClick={handleLogout} activeClassName="selected" >
-                                Logout
-            </NavLink>
-                        </li>
-                        : <li>
-                            <NavLink className="nav-link" to="/login" activeClassName="selected" >
-                                Login
-          </NavLink>
-                        </li>}
-                </ul>
-            </nav>
+                        ?
+                        <NavLink className="nav-link" to="/ " onClick={handleLogout} >
+                            Logout
+                             </NavLink>
+
+                        :
+                        <NavLink className="nav-link" to="/login" >
+                            Login
+                             </NavLink>
+                    }
+                </Nav>
+            </Navbar>
         </header>
     );
 };

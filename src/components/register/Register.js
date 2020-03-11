@@ -1,5 +1,7 @@
 import React, { useState } from "react"
 import UserManager from "../../modules/UserManager"
+import { Form, Button} from "react-bootstrap"
+import "./Register.css"
 
 
 const Register = props => {
@@ -26,22 +28,22 @@ const Register = props => {
 
 
   return (
-    <form onSubmit={constructNewUser}>
-      <fieldset>
-        <h3>Register an Account</h3>
+    <Form onSubmit={constructNewUser} className="register_form">
+        <Form.Label>Register an Account</Form.Label>
         <div className="formgrid">
           <input onChange={handleFieldChange} type="email"
             id="email"
             placeholder="Email address"
             required="" autoFocus="" />
-          <input onChange={handleFieldChange} type="username"
+        </div>
+        <div>
+        <input onChange={handleFieldChange} type="username"
             id="username"
             placeholder="Username"
             required="" autoFocus="" />
         </div>
-        <button type="submit" disabled={isLoading} >Submit</button>
-      </fieldset>
-    </form>
+        <Button type="submit" bg="dark" variant="dark" disabled={isLoading} >Submit</Button>
+    </Form>
   );
 };
 
