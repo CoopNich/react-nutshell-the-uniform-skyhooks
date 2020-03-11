@@ -39,7 +39,7 @@ const TaskList = props => {
         </button>
       </section>
       <div className="container-cards">
-        {tasks.map(task => (
+        {tasks.sort((a, b) => new Date(a.completionDate) - new Date(b.completionDate)).map(task => (
           <TaskCard
             key={task.id}
             task={task}
