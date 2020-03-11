@@ -32,7 +32,7 @@ const NewsList = (props) => {
                 </Button>
             </section>
             <div className="container-cards">
-                {news.map(article =>
+            {news.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp)).map(article =>
                     <NewsCard
                         key={article.id}
                         article={article}
