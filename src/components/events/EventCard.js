@@ -4,7 +4,7 @@ import "./Events.css";
 
 const EventCard = props => {
     return (
-        <div className="card">
+        <div className="eventCard">
             <div className="card-content">
                 <h3>Event: <span className="card-eventName">
                     {props.event.eventName}
