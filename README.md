@@ -18,6 +18,9 @@
 
 Nutshell is a dashboard for people to use to organize their daily tasks, events, news article, and chat messages.
 
+### Login and Register
+Users can register by clicking "Register" on the login page. They can then use their registered email to login to the app.
+
 ### Messaging
 A user can send a public message by typing into the 'Messages' text area and then clicking on the 'Submit' button. Once a message has been created the user can edit their by clicking the appropriate button. All messages from all users should be displayed
 
