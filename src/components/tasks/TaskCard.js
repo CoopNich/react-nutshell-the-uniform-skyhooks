@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import TaskEditForm from "./TaskEditForm";
 
 const TaskCard = props => {
+  const [isEditing, setIsEditing] = useState(false);
+
   return (
     <div className="card">
       <div className="card-content">
         <h3>
           <span className="card-taskname">
-            <p
-              onClick={() => props.history.push(`/tasks/${props.task.id}/edit`)}
-            >
-              {props.task.name}
-            </p>
+            {isEditing ? (
+              <TaskEditForm
+                task={props.task}
+                setIsEditing={setIsEditing}
+              />
+            ) : (
+              <p onClick={() => setIsEditing(true)}>{props.task.name}</p>
+            )}
           </span>
         </h3>
         <p>Completion Date: {props.task.completionDate}</p>

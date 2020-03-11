@@ -20,47 +20,44 @@ const TaskEditForm = props => {
     setIsLoading(true);
 
     const editedTask = {
-      id: props.match.params.taskId,
+      id: props.task.id,
       name: task.name,
       completionDate: task.completionDate,
       isComplete: task.isComplete,
-      userId: task.userId,
+      userId: task.userId
     };
 
-    TaskManager.update(editedTask).then(() => props.history.push("/tasks"));
+    TaskManager.update(editedTask)
+    .then(()=>{
+      props.setIsEditing(false)
+    });
+  };
+
+  const keyPress = evt => {
+    if (evt.keyCode == 13) {
+      updateExistingTask(evt);
+    }
   };
 
   useEffect(() => {
-    TaskManager.get(props.match.params.taskId).then(task => {
-      setTask(task);
+      setTask(props.task);
       setIsLoading(false);
-    });
-  }, []);
+    }, []);
 
   return (
     <>
       <form>
-        <fieldset>
           <div className="formgrid">
-            <label htmlFor="Task name">Task Name</label>
             <input
               type="text"
               required
               className="form-control"
               onChange={handleFieldChange}
+              onKeyDown={keyPress}
               id="name"
               value={task.name}
             />
           </div>
-          <button
-            type="button"
-            disabled={isLoading}
-            onClick={updateExistingTask}
-            className="btn btn-primary"
-          >
-            Submit
-          </button>
-        </fieldset>
       </form>
     </>
   );
