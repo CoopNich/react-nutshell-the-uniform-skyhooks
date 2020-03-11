@@ -23,7 +23,7 @@ const TaskList = props => {
  
   useEffect(() => {
     getTasks();
-  }, []);
+  }, [tasks]);
 
   return (
     <>
