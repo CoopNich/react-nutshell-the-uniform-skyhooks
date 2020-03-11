@@ -13,13 +13,12 @@ const EventForm = props => {
 
     const constructNewEvent = evt => {
         evt.preventDefault();
-        if (event.eventName === "" || event.date === "" || event.location === "") {
+        if (event.eventName === "" || event.date === "" || event.location === "" ) {
           window.alert("Please input an event name, date, and location");
         } else {
           setIsLoading(true);
           const newEvent = {
             ...event, 
-            
             userId: parseInt(sessionStorage.getItem("credentials"))
         }
           EventManager.post(newEvent)
