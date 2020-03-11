@@ -5,11 +5,11 @@ import React from "react";
 const MessageCard = props => {
   const currentUserId = parseInt(sessionStorage.getItem("credentials"))
   return (
-    <div className="card">
+    <div>
       <div className="card-content">
-        <h3> 
+        <h2> 
           <span className="card-message">{props.message.user.username}: {props.message.message}</span>
-        </h3>
+        </h2>
         
         
         <Link to={`/messages/${props.message.id}`}>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MessageCard from "./MessageCard";
 import MessageManager from "../../modules/MessageManager";
+import { Button } from "react-bootstrap"
 
 const MessageList = props => {
 
@@ -8,7 +9,6 @@ const MessageList = props => {
 
   const getMessages = () => {
     return MessageManager.getAll().then(messagesFromAPI => {
-      console.log(messagesFromAPI);
       setMessages(messagesFromAPI);
     });
   };
@@ -27,13 +27,13 @@ const MessageList = props => {
   return (
     <>
       <section className="section-content">
-        <button
+        <Button bg="dark" variant="dark"
           type="button"
           className="btn"
           onClick={() => props.history.push("/messages/new")}
         >
           Submit Message
-        </button>
+        </Button>
       </section>
        <div className="container-cards">
         {messages.map(message => (

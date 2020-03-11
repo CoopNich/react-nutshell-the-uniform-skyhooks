@@ -1,11 +1,31 @@
 import React, { useState, useEffect } from "react";
+import UserManager from "../../modules/UserManager"
+import "./Home.css"
 
-const Home = () => {
+
+
+const Home = (props) => {
+
+  const [user, setUser] = useState({ username: "" });
+
+  const getCurrentUser = () => {
+    return UserManager.getCurrentUser().then(user => {
+      setUser(user)
+    });
+  };
+
+
+  useEffect(() => {
+    getCurrentUser();
+  }, []);
 
   return (
-    <>
-  
-      <h1>Home</h1>
+   <>
+    {
+      (props.hasUser)
+        ? <h1 className="welcome">Welcome, {user.username}!</h1>     
+        : null
+    }
     </>
   );
 };

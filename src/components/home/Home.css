@@ -1,0 +1,9 @@
+.welcome {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+    padding: 50px;
+}

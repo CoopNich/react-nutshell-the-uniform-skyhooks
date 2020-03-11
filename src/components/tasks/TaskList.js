@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TaskCard from "./TaskCard";
 import TaskManager from "../../modules/TaskManager";
+import { Button } from "react-bootstrap"
 
 const TaskList = props => {
   const [tasks, setTasks] = useState([]);
@@ -28,7 +29,7 @@ const TaskList = props => {
   return (
     <>
       <section className="section-content">
-        <button
+        <Button bg="dark" variant="dark"
           type="button"
           className="btn"
           onClick={() => {
@@ -36,7 +37,7 @@ const TaskList = props => {
           }}
         >
           New Task
-        </button>
+        </Button>
       </section>
       <div className="container-cards">
         {tasks.map(task => (
