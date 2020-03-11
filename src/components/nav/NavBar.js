@@ -7,7 +7,7 @@ const NavBar = props => {
 
     const handleLogout = () => {
         props.clearUser();
-        props.history.push('/');
+        props.history.push('/login');
     }
 
     return (
@@ -50,7 +50,7 @@ const NavBar = props => {
                         : null}
                     {props.hasUser
                         ?
-                        <NavLink className="nav-link" to="/ " onClick={handleLogout} >
+                        <NavLink className="nav-link" to="/login" onClick={handleLogout} >
                             Logout
                              </NavLink>
 

@@ -20,7 +20,7 @@ const Login = props => {
         window.alert("Please enter a valid email")
       } else {
     props.setUser(result[0].id)
-    props.history.push("/news");
+    props.history.push("/Home");
   }})}
 
   return (

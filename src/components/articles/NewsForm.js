@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import NewsManager from "../../modules/NewsManager"
+import { Form, Button } from "react-bootstrap"
+import "./NewsForm.css"
 
 
 const NewsForm = props => {
@@ -33,10 +35,11 @@ const NewsForm = props => {
 
     return (
         <>
-            <form>
-                <fieldset>
+            <Form className="newsForm_Form">
+               
                     <div className="formgrid">
-                        <label htmlFor="title">Title</label>
+                        <div>
+                        {/* <label htmlFor="title">Title</label> */}
                         <input
                             type="text"
                             required
@@ -44,7 +47,9 @@ const NewsForm = props => {
                             id="title"
                             placeholder="Article Title"
                         />
-                        <label htmlFor="url">URL</label>
+                        </div>
+                        <div>
+                        {/* <label htmlFor="url">URL</label> */}
                         <input
                             type="text"
                             required
@@ -52,7 +57,9 @@ const NewsForm = props => {
                             id="url"
                             placeholder="Website URL"
                         />
-                        <label htmlFor="synopsis">Synopsis</label>
+                        </div>
+                        <div>
+                        {/* <label htmlFor="synopsis">Synopsis</label> */}
                         <input
                             type="textfield"
                             required
@@ -60,17 +67,18 @@ const NewsForm = props => {
                             id="synopsis"
                             placeholder="Synopsis"
                         />
-
+                        </div>
                     </div>
                     <div className="alignRight">
-                        <button
+                        <Button
+                         className="btn" bg="dark" variant="dark"
                             type="button"
                             disabled={isLoading}
                             onClick={constructNewArticle}
-                        >Submit</button>
+                        >Submit</Button>
                     </div>
-                </fieldset>
-            </form>
+              
+            </Form>
         </>
     );
 

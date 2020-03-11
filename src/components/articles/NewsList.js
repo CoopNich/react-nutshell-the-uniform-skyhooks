@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import NewsCard from "./NewsCard";
 import NewsManager from "../../modules/NewsManager";
+import { Button } from "react-bootstrap"
 
 const NewsList = (props) => {
     const [news, setNews] = useState([]);
@@ -24,11 +25,11 @@ const NewsList = (props) => {
     return (
         <>
             <section className="section-content">
-                <button type="button"
+                <Button type="button"
                     className="btn"
                     onClick={() => { props.history.push("/news/new") }}>
                     Add Article
-                </button>
+                </Button>
             </section>
             <div className="container-cards">
                 {news.map(article =>

@@ -42,7 +42,7 @@ const ApplicationViews = props => {
         exact
         path="/Home"
         render={props => {
-          return <Home />;
+          return <Home hasUser={hasUser} {...props}/>;
         }}
       />
       <Route
