@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import EventManager from '../../modules/EventManager';
+import "./EventForm.css"
+import { Form, Button } from "react-bootstrap"
 
 const EventForm = props => {
     const [event, setEvent] = useState({ eventName: "", date: "", location: "" });
@@ -28,9 +30,9 @@ const EventForm = props => {
 
       return (
         <>
-          <form>
-            <fieldset>
+          <Form className="eventForm_Form">
               <div className="formgrid">
+              <label htmlFor="eventName">Event</label>
                 <input
                   type="text"
                   required
@@ -38,8 +40,8 @@ const EventForm = props => {
                   id="eventName"
                   placeholder="Event Name"
                 />
-                <label htmlFor="eventName">Event</label>
-
+                
+                <label htmlFor="date">Date</label>
                 <input
                   type="date"
                   required
@@ -47,8 +49,8 @@ const EventForm = props => {
                   id="date"
                   placeholder="date"
                 />
-                <label htmlFor="date">Date</label>
-
+                
+                <label htmlFor="location">Location</label>
                 <input
                   type="text"
                   required
@@ -56,7 +58,7 @@ const EventForm = props => {
                   id="location"
                   placeholder="location"
                 />
-                <label htmlFor="location">Location</label>
+               
 
               </div>
               <div className="alignRight">
@@ -66,8 +68,7 @@ const EventForm = props => {
                   onClick={constructNewEvent}
                 >Submit</button>
               </div>
-            </fieldset>
-          </form>
+          </Form>
         </>
       );
     };

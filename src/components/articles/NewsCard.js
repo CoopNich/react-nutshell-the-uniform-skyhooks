@@ -1,23 +1,24 @@
 import React from "react"; 
 import { Link } from "react-router-dom"
+import { Card, Button } from "react-bootstrap"
 
 const NewsCard = props => {
 
     return (
-        <div className="card">
+        <Card className="card">
       <div className="card-content">
-        <h3>Title: <span className="card-title">
+        <h3><span className="card-title">
           {props.article.title}
         </span></h3>
-        <p><a href={props.article.url}>Link</a></p>
-        <Link to={`/news/${props.article.id}`}><button>Details</button></Link>
-        <button type="button"
+        <h5><a href={props.article.url}>Link</a></h5>
+        <Link to={`/news/${props.article.id}`}><Button className="btn" bg="dark" variant="dark">Details</Button></Link>
+        <Button className="btn" bg="dark" variant="dark" type="button"
           onClick={() => props.history.push(`/news/${props.article.id}/edit`)}>
           Edit
-        </button>
-        <button type="button" onClick={() => props.deleteArticle(props.article.id)}>Delete</button>
+        </Button>
+        <Button className="btn" bg="dark" variant="dark" type="button" onClick={() => props.deleteArticle(props.article.id)}>Delete</Button>
       </div>
-    </div>
+    </Card>
     )
 }
 

@@ -40,7 +40,6 @@ const NewsDetail = props => {
         <h3>Title: <span>{article.title}</span></h3>
         <p>URL: {article.url}</p>
         <p>Synopsis: {article.synopsis}</p>
-        <p>Date: {article.timestamp}</p>
         <button type="button" disabled={isLoading} onClick={handleDelete}>
           Delete Article
         </button>

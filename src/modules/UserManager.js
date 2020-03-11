@@ -4,6 +4,9 @@ export default {
     getUser(email) {
         return fetch(`${remoteURL}/users?email=${email}`).then(result => result.json());
     },
+    getCurrentUser() {
+        return fetch(`${remoteURL}/users/${parseInt(sessionStorage.getItem("credentials"))}`).then(result => result.json());
+    },
     getAllUsers() {
         return fetch(`${remoteURL}/users`).then(result => result.json());
       },

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import EventCard from "./EventCard";
 import EventManager from '../../modules/EventManager';
 import "./Events.css";
+import { Button } from "react-bootstrap"
 
 
 const EventList = (props) => {
@@ -24,12 +25,12 @@ const EventList = (props) => {
 return (
     <>
         <section className="section-content">
-            <button
+            <Button bg="dark" variant="dark"
                 type="button"
                 className="btn"
                 onClick={() => { props.history.push("/events/new") }}>
                 Add Event
-            </button>
+            </Button>
         </section>
         <div className="container-cards">
             {events.sort((a, b) => new Date(a.date) - new Date(b.date)).map(event =>
