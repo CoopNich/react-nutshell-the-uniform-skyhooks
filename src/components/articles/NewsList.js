@@ -25,7 +25,7 @@ const NewsList = (props) => {
     return (
         <>
             <section className="section-content">
-                <Button type="button"
+                <Button type="button" bg="dark" variant="dark"
                     className="btn"
                     onClick={() => { props.history.push("/news/new") }}>
                     Add Article
