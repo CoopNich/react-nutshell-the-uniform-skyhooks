@@ -1,68 +1,37 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Nutshell: The Information Dashboard
 
-## Available Scripts
+## Setup: Follow these steps to set up the app
 
-In the project directory, you can run:
+1. Clone this repository
+2. `cd` into the directory it creates
+3. Make a `database.json` file in the `api` directory. Refer to ERD relationships below for data structure
+4. Initiate the json server in port 5002 from the `api` directory.
+    * `json-server -p 5002 -w database.json`
+4. In a new terminal tab/window `cd` into the `src` directory
+5. Run `npm start`
 
-### `npm start`
+## ERD Relationships
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![nutshell ERD](./Nutshell_ERD.png)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Using the App
 
-### `npm test`
+Nutshell is a dashboard for people to use to organize their daily tasks, events, news article, and chat messages.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Login and Register
+Users can register by clicking "Register" on the login page. They can then use their registered email to login to the app.
 
-### `npm run build`
+### Messaging
+A user can send a public message by typing into the 'Messages' text area and then clicking on the 'Submit' button. Once a message has been created the user can edit their by clicking the appropriate button. All messages from all users should be displayed
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Events
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+A user can record upcoming events by clicking the "New Event" button and filling out the appropriate input fields. Once save is clicked the events are sorted in chronological order with the most upcoming event being the first in the list. That most upcoming entry is also highlighted with an individual background color, bold font and increased font size for readability. The user also has the option to edit their event by clicking on the accompanied event button and editing the prefilled fields. The user also has the option to delete their event entirely. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### News Articles
 
-### `npm run eject`
+A user can save news articles to their personal dashboard by clicking 'Add Article' and inputting the appropriate information in the input fields. Saved articles are populated with the most recently saved/edited article first. Any article entry can be edited or deleted by clicking the 'edit' or 'delete' button below each saved article.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Tasks
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+A user can save tasks to a to-do list by clicking "Add A New Task" and adding a description and an expected completion date to the respective forms that appear. Users have the ability to edit the name and date of tasks by clicking an "Edit" button located next to each task. They also can check a task as complete by clicking the "Complete" checkbox. This will remove the task from their to-do list, but it will still persist in the database as a completed task. 
